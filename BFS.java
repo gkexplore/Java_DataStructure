@@ -1,8 +1,6 @@
 package com.java.datastructure;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
 //https://www.udemy.com/advanced-algorithms-in-java/learn/v4/t/lecture/2484016?start=0
@@ -16,10 +14,10 @@ public class BFS{
 		Vertex vertex4 = new Vertex(4);
 		Vertex vertex5 = new Vertex(5);
 		
-		vertex1.addNeighborList(vertex2);
-		vertex1.addNeighborList(vertex4);
-		vertex4.addNeighborList(vertex5);
-		vertex2.addNeighborList(vertex3);
+		vertex1.addNeighbor(vertex2);
+		vertex1.addNeighbor(vertex4);
+		vertex4.addNeighbor(vertex5);
+		vertex2.addNeighbor(vertex3);
 		
 		BFS bfs = new BFS();
 		bfs.bfs(vertex1);
@@ -43,47 +41,4 @@ public class BFS{
 }
 
 
-class Vertex {
-	
-	public int data;
-	public boolean visited;
-	public List<Vertex> neighborList;
-	
-	Vertex(int data){
-		this.data = data;
-		this.neighborList = new ArrayList<Vertex>();
-	}
-	
-	public void addNeighborList(Vertex vertext){
-		neighborList.add(vertext);
-	}
 
-	public int getData() {
-		return data;
-	}
-
-	public void setData(int data) {
-		this.data = data;
-	}
-
-	public boolean isVisited() {
-		return visited;
-	}
-
-	public void setVisited(boolean visited) {
-		this.visited = visited;
-	}
-
-	public List<Vertex> getNeighborList() {
-		return neighborList;
-	}
-
-	public void setNeighborList(List<Vertex> neighborList) {
-		this.neighborList = neighborList;
-	}
-
-	public String toString(){
-		return data+"";
-	}
-
-}
