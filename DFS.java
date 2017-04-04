@@ -7,7 +7,8 @@ import java.util.Stack;
 //https://www.udemy.com/advanced-algorithms-in-java/learn/v4/t/lecture/3442528?start=0
 //Time Complexity : O(V+E), V - Number of Vertices, E - Number of Edges
 //Go till farthest node on the left/right and then backtrack
-
+//Memory Complexity = O(Log N)
+//
 public class DFS {
 	
 	private Stack<Vertex> stack;
@@ -42,16 +43,18 @@ public class DFS {
 	public void dfs(List<Vertex> vertexList){
 		for(Vertex v: vertexList){
 			if(!v.isVisited()){
-				dfs(v);
+				v.setVisited(true);
+				//dfsWithStack(v);
+				dfsRecursive(v);
 			}
 		}
 	}
 	
-	public void dfs(Vertex root){
+	public void dfsWithStack(Vertex root){
 	
-		this.stack.add(root);
+		this.stack.push(root);
 		root.setVisited(true);
-		while(!stack.isEmpty()){
+		while(!this.stack.isEmpty()){
 			Vertex actualVertex = this.stack.pop();
 			System.out.println(actualVertex);
 			for(Vertex v: actualVertex.getNeighborList()){
@@ -59,6 +62,16 @@ public class DFS {
 					v.setVisited(true);
 					this.stack.push(v);
 				}
+			}
+		}
+	}
+	
+	public void dfsRecursive(Vertex root){
+		System.out.println(root);
+		for(Vertex v: root.getNeighborList()){
+			if(!v.isVisited()){
+				v.setVisited(true);
+				dfsRecursive(v);
 			}
 		}
 	}
