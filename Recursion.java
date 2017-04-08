@@ -15,6 +15,7 @@ public class Recursion {
 			i++;
 		}
 		recursion.fibonacci(7);
+		System.out.println(recursion.reverseString("Karthik"));
 	}
 	
 	public int factorial(int n){
@@ -37,5 +38,13 @@ public class Recursion {
 		
 		long fib = fibonacci(n-1) + fibonacci(n-2);
 		return fib;
+	}
+	
+	public String reverseString(String str){
+		if(str.length()==1)
+			return str;
+		else
+			System.out.println(str.substring(1, str.length())+"+"+str.charAt(0));
+			return reverseString(str.substring(1, str.length()))+str.charAt(0);
 	}
 }
